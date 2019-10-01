@@ -1,11 +1,39 @@
 from minieigen import Vector3, Matrix3, Quaternion
 import numpy as np
 
+"""
+rotation_conversion.py
+----------------
+
+functions:
+    1. numpy_to_Vector3
+    2. angleaxis_to_angle_axis
+    3. angleaxis_to_quaternion
+    4. angleaxis_to_rotation_matrix
+    5. rotation_matrix_to_angleaxis
+"""
+
+
 def numpy_to_Vector3(arr):
+    """
+    1. numpy_to_Vector3():
+        - note:
+        - input:
+        - return:
+        - functionality:
+    """
     tmp = arr.astype(np.float64)
-    return Vector3(tmp[0],tmp[1],tmp[2])
+    return Vector3(tmp[0], tmp[1], tmp[2])
+
 
 def angleaxis_to_angle_axis(aa, epsilon=1e-6):
+    """
+    2. angleaxis_to_angle_axis():
+        - note:
+        - input:
+        - return:
+        - functionality:
+    """
     """Converts the angle axis vector with angle encoded as magnitude to 
     the angle axis representation with seperate angle and axis.
 
@@ -21,13 +49,20 @@ def angleaxis_to_angle_axis(aa, epsilon=1e-6):
     angle = aa.norm()
     if angle < epsilon:
         angle = 0
-        axis = Vector3(1,0,0)
+        axis = Vector3(1, 0, 0)
     else:
         axis = aa.normalized()
     return angle, axis
 
 
 def angleaxis_to_quaternion(aa, epsilon=1e-6):
+    """
+    3. angleaxis_to_quaternion():
+        - note:
+        - input:
+        - return:
+        - functionality:
+    """
     """Converts the angle axis vector with angle encoded as magnitude to 
     the quaternion representation.
 
@@ -40,12 +75,18 @@ def angleaxis_to_quaternion(aa, epsilon=1e-6):
 
     returns the unit quaternion
     """
-    angle, axis = angleaxis_to_angle_axis(aa,epsilon)
-    return Quaternion(angle,axis)
-
+    angle, axis = angleaxis_to_angle_axis(aa, epsilon)
+    return Quaternion(angle, axis)
 
 
 def angleaxis_to_rotation_matrix(aa, epsilon=1e-6):
+    """
+    4. angleaxis_to_rotation_matrix():
+        - note:
+        - input:
+        - return:
+        - functionality:
+    """
     """Converts the angle axis vector with angle encoded as magnitude to 
     the rotation matrix representation.
 
@@ -58,17 +99,24 @@ def angleaxis_to_rotation_matrix(aa, epsilon=1e-6):
 
     returns the 3x3 rotation matrix as numpy.ndarray
     """
-    if not isinstance(aa,Vector3):
+    if not isinstance(aa, Vector3):
         _tmp = np.squeeze(aa).astype(np.float64)
         _aa = Vector3(_tmp[0], _tmp[1], _tmp[2])
     else:
         _aa = Vector3(aa)
-    q = angleaxis_to_quaternion(_aa,epsilon)
+    q = angleaxis_to_quaternion(_aa, epsilon)
     tmp = q.toRotationMatrix()
     return np.array(tmp)
 
 
 def rotation_matrix_to_angleaxis(R):
+    """
+    5. rotation_matrix_to_angleaxis():
+        - note:
+        - input:
+        - return:
+        - functionality:
+    """
     """Converts the rotation matrix to an angle axis vector with the angle 
     encoded as the magnitude.
 
@@ -76,9 +124,9 @@ def rotation_matrix_to_angleaxis(R):
 
     returns an angle axis vector as np.array
     """
-    angle,axis = Quaternion(R).toAngleAxis()
-    aa = angle*axis
+    angle, axis = Quaternion(R).toAngleAxis()
+    aa = angle * axis
     return np.array(aa)
 
 
-    
+""" End of the script """

@@ -79,6 +79,10 @@ class Tracker:
                 - return:
                 - functionality:
         """
+        # loading the TrackerCore class with init parameters:
+        # tracking_module_path: path to the trained tracking_module
+        # checkpoint:
+        # intrinsics:
         self._tracker_core = TrackerCore(tracking_module_path, checkpoint, intrinsics)
         self._image_width = self._tracker_core.image_width
         self._image_height = self._tracker_core.image_height
@@ -216,7 +220,7 @@ class Tracker:
             set_new_keyframe = True
             print('setting new key frame because of angle threshold {0}'.format(angle_diff))
 
-        #         valid_warped_pixels = np.count_nonzero(output['warped_image'])
+        # valid_warped_pixels = np.count_nonzero(output['warped_image'])
         if not set_new_keyframe and self._tracker_core._valid_warped_pixels / self._tracker_core._key_valid_depth_pixels < self._key_valid_pixel_ratio_threshold:
             set_new_keyframe = True
             print('setting new key frame because of valid pixel ratio threshold {0}'.format(
@@ -357,6 +361,7 @@ class TrackerCore:
                 - return: -
                 - functionality:
         """
+        # tracking module path
         self._tracking_module = tracking_module_path
         self._checkpoint = checkpoint
         self._intrinsics = np.squeeze(intrinsics)[np.newaxis, :]

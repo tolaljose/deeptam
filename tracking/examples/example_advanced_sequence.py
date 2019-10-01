@@ -3,7 +3,6 @@ from deeptam_tracker.evaluation.rgbd_sequence import RGBDSequence
 from deeptam_tracker.evaluation.metrics import rgbd_rpe
 from deeptam_tracker.utils.vis_utils import convert_between_c2w_w2c,convert_array_to_colorimg
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 import os
 from PIL import ImageChops
@@ -104,7 +103,7 @@ def track_rgbd_sequence(checkpoint, datadir, tracking_module_path, visualization
     visualization: bool
     """
     
-    ## initialization
+    # initialization
     sequence = RGBDSequence(datadir)
     intrinsics = sequence.get_sun3d_intrinsics()
     tracker = Tracker(tracking_module_path,checkpoint,intrinsics)
