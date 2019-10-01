@@ -1,6 +1,5 @@
 import numpy as np
 from PIL import Image
-# from minieigen import MatrixX,Vector3
 from datatypes import *
 
 """

@@ -12,6 +12,7 @@ functions:
     3. adjust_intrinsics
 """
 
+
 def safe_crop_image(image, box, fill_value):
     """
     1. safe_crop_image():
