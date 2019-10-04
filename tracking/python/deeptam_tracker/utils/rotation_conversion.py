@@ -4,7 +4,6 @@ import numpy as np
 """
 rotation_conversion.py
 ----------------
-
 functions:
     1. numpy_to_Vector3
     2. angleaxis_to_angle_axis
@@ -36,14 +35,11 @@ def angleaxis_to_angle_axis(aa, epsilon=1e-6):
     """
     """Converts the angle axis vector with angle encoded as magnitude to 
     the angle axis representation with seperate angle and axis.
-
     aa: minieigen.Vector3
         axis angle with angle as vector magnitude
-
     epsilon: minimum angle in rad
         If the angle is smaller than epsilon
         then 0,(1,0,0) will be returned
-
     returns the tuple (angle,axis)
     """
     angle = aa.norm()
@@ -65,14 +61,11 @@ def angleaxis_to_quaternion(aa, epsilon=1e-6):
     """
     """Converts the angle axis vector with angle encoded as magnitude to 
     the quaternion representation.
-
     aa: minieigen.Vector3
         axis angle with angle as vector magnitude
-
     epsilon: minimum angle in rad
         If the angle is smaller than epsilon
         then 0,(1,0,0) will be returned
-
     returns the unit quaternion
     """
     angle, axis = angleaxis_to_angle_axis(aa, epsilon)
@@ -89,14 +82,11 @@ def angleaxis_to_rotation_matrix(aa, epsilon=1e-6):
     """
     """Converts the angle axis vector with angle encoded as magnitude to 
     the rotation matrix representation.
-
     aa: minieigen.Vector3 or np.array
         axis angle with angle as vector magnitude
-
     epsilon: minimum angle in rad
         If the angle is smaller than epsilon
         then 0,(1,0,0) will be returned
-
     returns the 3x3 rotation matrix as numpy.ndarray
     """
     if not isinstance(aa, Vector3):
@@ -119,9 +109,7 @@ def rotation_matrix_to_angleaxis(R):
     """
     """Converts the rotation matrix to an angle axis vector with the angle 
     encoded as the magnitude.
-
     R: minieigen.Matrix3 or np.array
-
     returns an angle axis vector as np.array
     """
     angle, axis = Quaternion(R).toAngleAxis()

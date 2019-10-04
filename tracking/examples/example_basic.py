@@ -1,7 +1,7 @@
-from deeptam_tracker.tracker import TrackerCore
-from deeptam_tracker.evaluation.rgbd_sequence import RGBDSequence 
-from deeptam_tracker.evaluation.metrics import position_diff, angle_diff
-from deeptam_tracker.utils.vis_utils import convert_array_to_colorimg
+from ..python.deeptam_tracker.tracker import TrackerCore
+from ..python.deeptam_tracker.evaluation.rgbd_sequence import RGBDSequence
+from ..python.deeptam_tracker.evaluation.metrics import position_diff, angle_diff
+from ..python.deeptam_tracker.utils.vis_utils import convert_array_to_colorimg
 from PIL import ImageChops
 import matplotlib.pyplot as plt
 import os

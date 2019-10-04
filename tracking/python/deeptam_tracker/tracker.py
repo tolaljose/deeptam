@@ -7,7 +7,6 @@ from .utils.rotation_conversion import *
 """
 Tracker.py
 ----------------
-
 classes:
     1. Tracker
     2. TrackerCore
@@ -20,7 +19,6 @@ class Tracker:
         -------------------
         This class implements a sequence tracker using TrackerCore.
         It allows for new key frame generation.
-
         members (variables):
             1. _tracker_core
             2. _image_width
@@ -32,7 +30,6 @@ class Tracker:
             8. _init_tracker
             9. _key_poses
             10. _poses
-
         members (functions):
             1. constructor __init()___
             2. destructor __del__()
@@ -316,7 +313,6 @@ class TrackerCore:
         TrackerCore
         -------------------
         This class includes the basic functions to track w.r.t a key frame using DeepTAM networks.
-
         members (variables):
             1. _tracking_module
             2. _checkpoint
@@ -332,7 +328,6 @@ class TrackerCore:
             12. _key_depth
             13. _key_valid_depth_pixels
             14. _valid_warped_pixels
-
         members (functions):
             1. constructor __init()___
             2. destructor __del__()

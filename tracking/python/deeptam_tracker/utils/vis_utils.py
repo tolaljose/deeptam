@@ -1,6 +1,6 @@
 import numpy as np
 from PIL import Image
-from datatypes import *
+from .datatypes import *
 
 """
 vis_utils.py
@@ -61,7 +61,8 @@ def convert_between_c2w_w2c(inp):
     """
     3. convert_between_c2w_w2c():
         - note:
-            - Converts camera-to-world pose to world-to-camera pose or vice verse
+            - Converts camera-to-world pose to
+                world-to-camera pose or vice verse
         - input:
             - inp:
                 - Pose

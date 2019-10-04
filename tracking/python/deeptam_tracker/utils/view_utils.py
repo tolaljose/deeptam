@@ -1,7 +1,16 @@
-from .datatypes import View
 from PIL import Image
 from skimage.transform import resize
+from skimage import io
+from skimage.data import hubble_deep_field
 import numpy as np
+
+# in order to make the datatypes available
+# both for this script and for other levels of the hierarchy
+# without confronting ModuleNotFoundError
+if __package__:
+    from .datatypes import View
+else:
+    from datatypes import View
 
 """
 view_utils.py
@@ -85,7 +94,9 @@ def adjust_intrinsics(view, K_new, width_new, height_new):
     """
     3. adjust_intrinsics():
         - note:
-            - Creates a new View with the specified intrinsics and image dimensions.
+            - Creates a new View with
+                - the specified intrinsics and
+                - image dimensions.
             - The skew parameter K[0,1] will be ignored.
         - input:
             - view: View namedtuple
@@ -156,4 +167,15 @@ def adjust_intrinsics(view, K_new, width_new, height_new):
     return View(R=view.R, t=view.t, K=K_new, image=img_new, depth=depth_new, depth_metric=view.depth_metric)
 
 
+# for testing the script
+if __name__ == "__main__":
+
+    # hubble deep field image
+    # from scikit-image
+    hubble = hubble_deep_field()
+    print(hubble.shape)
+    """
+    (872, 1000, 3)
+    """
+    box1 = (x0, y0, x1, y1)
 """ End of the script """

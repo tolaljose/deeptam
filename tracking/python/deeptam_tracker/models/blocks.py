@@ -107,8 +107,9 @@ def motion_block(block_inputs, weights_regularizer=None, resolution_level=0, sig
             - Creates a motion network
         - inputs:
             - block_inputs: [(Tensor, num_outputs)]
-                List of input tensors and the target number of output channels for each feature before concatenation
-                The tensor format is NCHW.
+                - List of input tensors and
+                - the target number of output channels for each feature before concatenation
+                - The tensor format is NCHW.
             - weights_regularizer: function
                 A function returning a weight regularizer
             - resolution_level:
